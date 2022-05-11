@@ -1,0 +1,54 @@
+﻿@model IEnumerable<bancoDeImagens.Models.Images>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+	<a class="button success" asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+	if (item.Type == ".jpeg" || item.Type == ".jpg" || item.Type == ".png" || item.Type == ".gif")
+	{
+		@*".gif", ".jpeg", ".jpg", ".png", ".mp4", ".mp3"*@
+		<div class="card-size">
+			<span class="description-table">@Html.DisplayFor(modelItem => item.Description)</span>
+
+			<img class="image-table" src="~/arq/@item.Name" />
+
+			<a asp-action="Edit" class="button edit" asp-route-id="@item.Id">Editar</a> |
+			<a asp-action="Details" class="button ok" asp-route-id="@item.Id">Detalhes</a> |
+			<a asp-action="Delete" class="button delete" asp-route-id="@item.Id">Deletar</a><p></p>
+		</div>
+	}
+	else if (item.Type == ".mp4")
+	{
+		@Html.DisplayFor(modelItem => item.Description)
+		<video class="video-table" controls>
+			<source src="~/arq/@item.Name" type="video/mp4" />
+		</video>
+
+
+		<a asp-action="Edit" class="button edit" asp-route-id="@item.Id">Editar</a>
+		<a asp-action="Details" class="button ok" asp-route-id="@item.Id">Detalhes</a>
+		<a asp-action="Delete" class="button delete" asp-route-id="@item.Id">Deletar</a><p></p>
+	}
+	else if (item.Type == ".mp3")
+	{
+		@Html.DisplayFor(modelItem => item.Description)
+		<audio class="video-table" controls>
+			<source src="~/arq/@item.Name" type="audio/mp3" />
+		</audio>
+
+
+		<a asp-action="Edit" class="button edit" asp-route-id="@item.Id">Editar</a>
+		<a asp-action="Details" class="button ok" asp-route-id="@item.Id">Detalhes</a>
+		<a asp-action="Delete" class="button delete" asp-route-id="@item.Id">Deletar</a> <p></p>
+	}
+
+}

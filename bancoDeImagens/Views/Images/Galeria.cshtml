@@ -1,0 +1,40 @@
+﻿@model IEnumerable<bancoDeImagens.Models.Images>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Galeria</h1>
+
+<p>
+	<a class="button success" asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+	if (item.Type == ".jpeg" || item.Type == ".jpg" || item.Type == ".png" || item.Type == ".gif")
+	{
+		@*".gif", ".jpeg", ".jpg", ".png", ".mp4", ".mp3"*@
+		<div class="card-size">
+			<span class="description-table">@Html.DisplayFor(modelItem => item.Description)</span>
+
+			<img class="image-table" src="~/arq/@item.Name" />
+		</div>
+	}
+	else if (item.Type == ".mp4")
+	{
+		@Html.DisplayFor(modelItem => item.Description)
+		<video class="video-table" controls>
+			<source src="~/arq/@item.Name" type="video/mp4" />
+		</video>
+	}
+	else if (item.Type == ".mp3")
+	{
+		@Html.DisplayFor(modelItem => item.Description)
+		<audio class="video-table" controls>
+			<source src="~/arq/@item.Name" type="audio/mp3" />
+		</audio>
+	}
+
+}

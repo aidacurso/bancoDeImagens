@@ -1,0 +1,43 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.image-table{
+    max-width:20%;
+}
+.edit {
+    background-color:orange;
+    color:white;
+}
+.delete {
+    color: white;
+    background-color: red;
+}
+.success {
+    color: white;
+    background-color: green;
+}
+.ok {
+    color: white;
+    background-color: blue;
+}
+.button{
+    border-radius:5px;
+    padding:10px;
+    text-decoration:none;
+
+}
