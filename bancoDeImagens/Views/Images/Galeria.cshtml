@@ -11,30 +11,53 @@
 	<a class="button success" asp-action="Create">Create New</a>
 </p>
 
-@foreach (var item in Model)
-{
-	if (item.Type == ".jpeg" || item.Type == ".jpg" || item.Type == ".png" || item.Type == ".gif")
-	{
-		@*".gif", ".jpeg", ".jpg", ".png", ".mp4", ".mp3"*@
-		<div class="card-size">
-			<span class="description-table">@Html.DisplayFor(modelItem => item.Description)</span>
+<div class="row row-cols-1 row-cols-md-3">
+    @foreach (var item in Model)
+    {
+        if (item.Type == ".jpeg" || item.Type == ".jpg" || item.Type == ".png" || item.Type == ".gif")
+        {
+            @*".gif", ".jpeg", ".jpg", ".png", ".mp4", ".mp3"*@
 
-			<img class="image-table" src="~/arq/@item.Name" />
-		</div>
-	}
-	else if (item.Type == ".mp4")
-	{
-		@Html.DisplayFor(modelItem => item.Description)
-		<video class="video-table" controls>
-			<source src="~/arq/@item.Name" type="video/mp4" />
-		</video>
-	}
-	else if (item.Type == ".mp3")
-	{
-		@Html.DisplayFor(modelItem => item.Description)
-		<audio class="video-table" controls>
-			<source src="~/arq/@item.Name" type="audio/mp3" />
-		</audio>
-	}
+            <div class="col mb-4" style="text-align:center;">
+                <div class="card">
+                    <img src="~/arq/@item.Name" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Type)</h5><p></p>
+                        <p class="card-text" style="text-align-center">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (item.Type == ".mp4")
+        {
 
+            <div class="col mb-4" style="text-align:center;">
+                <div class="card">
+                    <video class="card-img-top" controls><source src="~/arq/@item.Name" class="card-img-top" alt="..."></video>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Type)</h5><p></p>
+                        <p class="card-text" style="text-align-center">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (item.Type == ".mp3")
+        {
+            <div class="col mb-4" style="text-align:center;">
+                <div class="card">
+                    <audio class="card-img-top" controls><source src="~/arq/@item.Name" class="card-img-top" alt="..."></audio>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Type)</h5><p></p>
+                        <p class="card-text" style="text-align-center">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
 }

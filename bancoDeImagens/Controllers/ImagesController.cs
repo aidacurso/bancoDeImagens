@@ -94,6 +94,22 @@ namespace bancoDeImagens.Controllers
             return View(image);
         }
 
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var imagem = await _context.Images.FindAsync(id);
+            if (imagem == null)
+            {
+                return NotFound();
+            }
+            return View(imagem);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Size,Type,Name,Description")] Images image, IFormFile video)

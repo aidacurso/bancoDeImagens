@@ -41,3 +41,24 @@ body {
     text-decoration:none;
 
 }
+.navbar-top {
+    background-color: #d02126 !important;
+    color:white!important;
+}
+.dropdown-cor {
+    background-color: #992532!important;
+    border-color:transparent;
+}
+.card-img-top img {
+    min-height: 414.4px!important;
+    max-height: 414.4px!important;
+}
+.card-img-top video {
+    min-height: 414.4px;
+    max-height: 414.4px;
+}
+.card-img-top  {
+    min-height: 300px;
+    max-height: 300px;
+    object-fit:contain
+}

@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/bancoDeImagens/wwwroot/arq
+/bancoDeImagens/Migrations/20220512151913_s.Designer.cs
+/bancoDeImagens/Migrations/20220512151913_s.cs
